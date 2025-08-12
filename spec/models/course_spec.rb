@@ -101,7 +101,7 @@ RSpec.describe Course, type: :model do
     end
   end
 
-  describe '.student_email_list', skip: true do
+  describe '.student_email_list' do
     it 'exists for a course' do
       expect { course.student_email_list }.not_to raise_error(NoMethodError)
     end
