@@ -1,1 +1,22 @@
-<h1>Dashboard</h1>
+
+<h1>Admin Dashboard</h1>
+
+<h2>Current Trimester</h2>
+<h3><%= "#{@current_trimester.term} - #{@current_trimester.year}" %></h3>
+<ul>
+  <% @current_trimester.courses.each do |course| %>
+    <li><a href="#"><%= course.coding_class.title %></a></li>
+  <% end %>
+</ul>
+
+<h2>Upcoming Trimester</h2>
+<h3><%= "#{@upcoming_trimester.term} - #{@upcoming_trimester.year}" %></h3>
+<ul>
+  <% @upcoming_trimester.courses.each do |course| %>
+    <li><a href="#"><%= course.coding_class.title %></a></li>
+  <% end %>
+</ul>
+
+#The important lines for tests are the <h3> lines — they match the strings  tests expect.
+
+#Make sure I use #{} inside <%= %> for interpolation.
