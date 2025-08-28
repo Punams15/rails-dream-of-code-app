@@ -1,5 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
+<h1><%= @course.coding_class.name %></h1> #show course title
+
+<h2>Enrolled Students:</h2>
+ <ul> 
+ <% if @students.any? %> 
+ <% @students.each do |student| %> 
+  <li><%= student.name %></li>
+   <% end %> 
+   <% else %> 
+   <li>No students enrolled yet.</li>
+    <% end %> 
+    </ul>
+
 <%= render @course %>
 
 <div>

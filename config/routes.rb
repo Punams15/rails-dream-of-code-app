@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :enrollments
   resources :mentor_enrollment_assignments
   resources :lessons
-  resources :courses
+  resources :courses, only: [:show]
   resources :coding_classes
 
   #Dashboard route

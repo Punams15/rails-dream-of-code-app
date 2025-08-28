@@ -13,10 +13,15 @@
 <h3><%= "#{@upcoming_trimester.term} - #{@upcoming_trimester.year}" %></h3>
 <ul>
   <% @upcoming_trimester.courses.each do |course| %>
-    <li><a href="#"><%= course.coding_class.title %></a></li>
+    
+    <li><%= link_to course.coding_class.title, course_path(course) %></li>
   <% end %>
 </ul>
 
 #The important lines for tests are the <h3> lines — they match the strings  tests expect.
 
 #Make sure I use #{} inside <%= %> for interpolation.
+
+#Replacing this <li><a href="#"><%= course.coding_class.title %></a></li> to  <li><%= link_to course.coding_class.title, course_path(course) %></li> 
+#course_path(course) generates the URL /courses/:id automatically.
+#Clicking it will go to CoursesController#show and display enrolled students.

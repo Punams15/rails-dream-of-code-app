@@ -8,6 +8,9 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
+    # @course is already set by set_course
+    @students = @course.students # Get enrolled students
+    @course = Course.find(params[:id]) #show each course and its enrolled students
   end
 
   # GET /courses/new

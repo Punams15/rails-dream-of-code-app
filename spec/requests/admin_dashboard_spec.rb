@@ -160,3 +160,26 @@ RSpec.describe 'Dashboard' , type: :request do   #The Outer describe, writing re
 #4.Run the tests again--bundle exec rspec spec/requests/admin_dashboard_spec.rb
 
 #Inside controller first create :bin/rails generate controller AdminDashboard
+
+#{} is called ruby string interpolation
+
+#<%= %> we need to use ruby string interpolation, so we'll have to enclose our ruby code in the ERB tag--<%= %>
+
+#<% %> → runs Ruby code, but does NOT output anything into the HTML.
+
+#<%= %> → runs Ruby code and outputs the result into the HTML.
+
+#TDD(Test-Driven Development) is a software development process where you write tests before writing the actual code.
+
+
+#app/controllers/courses_controller.rb.
+# def show
+
+#This defines the show action inside your CoursesController.
+
+#In Rails, every public method in a controller corresponds to an action (like index, new, create, show, etc.).
+
+#The show action is conventionally used to display one record (in this case, a single course).
+
+#TDD = write test → write code → refactor.
+
