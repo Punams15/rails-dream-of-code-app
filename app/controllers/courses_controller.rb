@@ -13,6 +13,8 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+    @coding_classes = CodingClass.all
+    @trimester = Trimester.all
   end
 
   # GET /courses/1/edit
@@ -48,12 +50,21 @@ class CoursesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_course
-      @course = Course.find(params.expect(:id))
-    end
-
-    # Only allow a list of trusted parameters through.
-    def course_params
-      params.expect(course: [ :coding_class_id, :trimester_id, :max_enrollment ])
-    end
+   def set_course
+  @course = Course.find(params[:id])
 end
+
+def course_params
+  params.require(:course).permit(:coding_class_id, :trimester_id, :max_enrollment)
+end
+end
+
+
+
+#note
+
+#@coding_classes and @trimesters are needed for your form’s dropdowns.
+
+#require(:course).permit(...) is the Rails convention for strong params.
+
+#params[:id] is the normal way to grab the id in set_course.
