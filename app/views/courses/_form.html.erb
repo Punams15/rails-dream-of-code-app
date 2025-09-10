@@ -13,12 +13,12 @@
 
   <div>
     <%= form.label :coding_class_id, style: "display: block" %>
-    <%= form.text_field :coding_class_id %>
+    <%= form.collection_select :coding_class_id, @coding_classes, :id, :name %>
   </div>
 
   <div>
     <%= form.label :trimester_id, style: "display: block" %>
-    <%= form.text_field :trimester_id %>
+   <%= form.collection_select :trimester_id, @trimesters, :id, :display_name %>
   </div>
 
   <div>

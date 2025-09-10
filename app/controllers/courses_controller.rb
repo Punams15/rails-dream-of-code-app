@@ -12,13 +12,16 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = Course.new
-    @coding_classes = CodingClass.all
-    @trimester = Trimester.all
+    @course = Course.new    # Make an empty course to fill in
+    @coding_classes = CodingClass.all  # Get all coding classes so we can pick one
+    @trimester = Trimester.all         # Get all trimesters so we can pick one
   end
 
   # GET /courses/1/edit
   def edit
+      @coding_classes = CodingClass.all 
+    @trimester = Trimester.all
+
   end
 
   # POST /courses or /courses.json
@@ -68,3 +71,7 @@ end
 #require(:course).permit(...) is the Rails convention for strong params.
 
 #params[:id] is the normal way to grab the id in set_course.
+
+#set_course: find the course with this number (ID) to look at or change it.
+
+#course_params: filters out only these info to go into the course: coding class, trimester, max enrollment etc. 
