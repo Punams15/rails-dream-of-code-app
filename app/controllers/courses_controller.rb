@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: %i[ show edit update destroy ]
+  before_action :set_collections, only: [:new, :edit]
 
   # GET /courses or /courses.json
   def index
@@ -19,8 +20,9 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+      @course = Course.find(params[:id])
       @coding_classes = CodingClass.all 
-    @trimester = Trimester.all
+      @trimester = Trimester.all
 
   end
 
@@ -57,10 +59,17 @@ class CoursesController < ApplicationController
   @course = Course.find(params[:id])
 end
 
+# METHOD missing last time
+  def set_collections
+    @coding_classes = CodingClass.all
+    @trimesters = Trimester.all
+  end
+end
+
 def course_params
   params.require(:course).permit(:coding_class_id, :trimester_id, :max_enrollment)
 end
-end
+
 
 
 

@@ -1,0 +1,8 @@
+<%= form_with(model: @trimester, local: true) do |form| %>
+  <div>
+    <%= form.label :application_deadline %>
+    <%= form.date_field :application_deadline %>
+  </div>
+
+  <%= form.submit "Update Trimester" %>
+<% end %>

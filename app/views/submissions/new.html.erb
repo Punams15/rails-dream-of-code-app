@@ -12,16 +12,19 @@
     </div>
   <% end %>
 
+  <!-- Lesson dropdown -->
   <div class="form-group">
-    <%= form.label :lesson, {}, { class: 'form-text' } %>
-    <%= form.select :lesson_id, options_from_collection_for_select(@lessons, :id, :title), { prompt: 'Select Lesson' }, { class: 'form-control' } %>
+    <%= form.label :lesson_id, "Lesson", class: 'form-text' %>
+    <%= form.collection_select :lesson_id, @lessons, :id, :title, { prompt: 'Select Lesson' }, { class: 'form-control' } %>
   </div>
 
+  <!-- Student dropdown -->
   <div class="form-group">
-    <%= form.label :student, {}, { class: 'form-text' } %>
-    <%= form.select :enrollment_id, options_from_collection_for_select(@enrollments, :id, :student_name), { prompt: 'Select Student' }, { class: 'form-control' } %>
+    <%= form.label :enrollment_id, "Student", class: 'form-text' %>
+    <%= form.collection_select :enrollment_id, @enrollments, :id, :student_name, { prompt: 'Select Student' }, { class: 'form-control' } %>
   </div>
 
+  <!-- URL input -->
   <div class="form-group">
     <%= form.label :url, 'URL', class: 'form-text' %>
     <%= form.text_field :url, class: 'form-control' %>
