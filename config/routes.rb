@@ -16,6 +16,16 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  # Defines the root path route ("/")
+  # root path route ("/")
   root "home#index"
+
+
+  # Add new API  routes here
+  namespace :api do
+    namespace :v1 do
+      get '/courses', to: 'courses#index'
+      get '/courses/:course_id/enrollments', to: 'enrollments#index'
+    end
+  end
 end
+
