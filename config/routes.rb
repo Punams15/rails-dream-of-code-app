@@ -17,10 +17,10 @@ Rails.application.routes.draw do
   root "home#index"
 
   # --- API routes ---
-  namespace :api do
-    namespace :v1 do
-      get '/courses', to: 'courses#index'
-      get '/courses/:course_id/enrollments', to: 'enrollments#index'
-    end
+namespace :api do
+  namespace :v1 do
+    post '/students', to: 'students#create'
+    get '/students', to: 'students#index'   # you added this
   end
+end
 end
