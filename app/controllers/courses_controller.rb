@@ -1,3 +1,4 @@
+# app/controllers/courses_controller.rb
 class CoursesController < ApplicationController
   before_action :require_login, except: [:index, :show]
   before_action :require_admin, only: [:new, :create, :edit, :update, :destroy]
@@ -5,11 +6,17 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all
+    respond_to do |format|
+      format.html # normal view
+      format.json { render json: @courses }
+    end
   end
 
   def show
-    # show course details; if you show enrollments here you may also require admin,
-    # or show enrollments separately and protect that route (below)
+    respond_to do |format|
+      format.html # normal show page
+      format.json { render json: @course }
+    end
   end
 
   def new
@@ -19,26 +26,40 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save
-      redirect_to @course, notice: 'Course created.'
+      respond_to do |format|
+        format.html { redirect_to @course, notice: 'Course created.' }
+        format.json { render :show, status: :created, location: @course }
+      end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @course.update(course_params)
-      redirect_to @course, notice: 'Course updated.'
+      respond_to do |format|
+        format.html { redirect_to @course, notice: 'Course updated.' }
+        format.json { render :show, status: :ok, location: @course }
+      end
     else
-      render :edit, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @course.destroy
-    redirect_to courses_path, notice: 'Course deleted.'
+    respond_to do |format|
+      format.html { redirect_to courses_path, notice: 'Course deleted.' }
+      format.json { head :no_content }
+    end
   end
 
   private
